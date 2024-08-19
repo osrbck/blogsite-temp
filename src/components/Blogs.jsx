@@ -2,9 +2,9 @@ import React from 'react'
 import  logomeu from '../assets/logo-meu.svg'
 import { Link } from 'react-router-dom'
 
-const Blogs = () => {
+const Blogs = ({blogs}) => {
 
-    const blogs = [
+    const blogs1 = [
         {
             "id":1,
             "title": "Blog 1",
@@ -42,13 +42,13 @@ const Blogs = () => {
             <div className='grid md:grid-cols-3 ss:grid-cols-2 gap-8 px-4 text-black'>
                 
                 {/* BLOGS */}
-                {blogs.map((blog)=>
+                {blogs.data.map((blog)=>
                     <Link to={`/blog/${blog.id}`}>
                         <div className='bg-white rounded-xl overflow-hidden drop-shadow-md'>
-                            <img className='h-56 w-full object-cover' src={blog.coverImg}/>
+                            <img className='h-56 w-full object-cover' src={`http://localhost:1337${blog.attributes.coverImg.data.attributes.url}`}/>
                             <div className='p-5'>
-                                <h3 className='font-bold text-lg my-1 text-center'>{blog.title}</h3>
-                                <p className='text-gray-600 text-sm'>{blog.desc}</p>
+                                <h3 className='font-bold text-lg my-1 text-center'>{blog.attributes.blogTitle}</h3>
+                                <p className='text-gray-600 text-sm'>{blog.attributes.blogDesc}</p>
                             </div>
                         </div>
                     </Link>
